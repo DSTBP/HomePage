@@ -6,18 +6,18 @@
   },
   {
     "icon": "LaptopCode",
-    "name": "评论管理",
-    "link": "https://waline.dstbp.com/ui"
+    "name": "工具集",
+    "link": "https://tooltopia.dstbp.net"
   },
   {
-    "icon": "Book",
+    "icon": "Compass",
     "name": "网址集",
     "link": "https://webnav.dstbp.net/"
   },
   {
-    "icon": "Compass",
-    "name": "起始页",
-    "link": "https://limestart.cn/"
+    "icon": "Book",
+    "name": "起始页",                     // "name": "个人相册",
+    "link": "https://www.limestart.cn/"   // "link": "https://album.dstbp.cn/"
   },
   {
     "icon": "Fire",
