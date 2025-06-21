@@ -16,8 +16,8 @@
   },
   {
     "icon": "Book",
-    "name": "起始页",                     // "name": "个人相册",
-    "link": "https://www.limestart.cn/"   // "link": "https://album.dstbp.cn/"
+    "name": "起始页",
+    "link": "https://www.limestart.cn/"
   },
   {
     "icon": "Fire",
