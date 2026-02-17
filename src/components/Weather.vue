@@ -12,6 +12,9 @@
     </span>
     <span class="sm-hidden">{{ weatherData.weather.windpower }}&nbsp;级</span>
   </div>
+  <div class="weather" v-else-if="isLoading">
+    <span>天气信息获取中...</span>
+  </div>
   <div class="weather" v-else>
     <span>天气数据获取失败</span>
   </div>
@@ -20,11 +23,15 @@
 <script setup>
 import { getAdcode, getWeather, getOtherWeather, getRegeo } from "@/api";
 import { Error } from "@icon-park/vue-next";
+import { reactive, ref, onMounted, h } from "vue";
 
-// 用户自身配置的高德开发者 Key
+// 高德开发者 Key
 const mainKey = import.meta.env.VITE_WEATHER_KEY;
 // 备用数据源的 高德 Key
 const backupKey = "03c558fd7bc4fd3829dd2c1d53afbb9f";
+
+// 控制加载状态的变量
+const isLoading = ref(true);
 
 // 天气数据
 const weatherData = reactive({
@@ -52,7 +59,7 @@ const getTemperature = (min, max) => {
   }
 };
 
-// 新增：获取设备的真实经纬度定位
+// 获取设备的真实经纬度定位
 const getPosition = () => {
   return new Promise((resolve, reject) => {
     if ("geolocation" in navigator) {
@@ -73,6 +80,9 @@ const getPosition = () => {
 
 // 获取天气数据
 const getWeatherData = async () => {
+  // 请求开始，开启加载状态
+  isLoading.value = true;
+  
   try {
     let adcode = "";
     let city = "";
@@ -117,7 +127,7 @@ const getWeatherData = async () => {
         windpower: result.lives[0].windpower,
       };
     } else {
-      // 你要求的备用数据源逻辑：使用 extensions=all 预报接口并计算数值
+      // 备用数据源逻辑：使用 extensions=all 预报接口并计算数值
       const result = await getWeather(backupKey, adcode, "all");
       if (result.status === "1" && result.forecasts.length > 0) {
         const cast = result.forecasts[0].casts[0]; // 获取当天的预报数组
@@ -148,6 +158,9 @@ const getWeatherData = async () => {
       console.error("天气信息获取完全失败:" + err);
       onError("天气信息获取失败");
     }
+  } finally {
+    // 无论最终成功还是彻底失败，请求结束时关闭加载状态
+    isLoading.value = false;
   }
 };
 
