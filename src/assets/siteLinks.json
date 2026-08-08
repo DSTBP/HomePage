@@ -7,26 +7,26 @@
   {
     "icon": "LaptopCode",
     "name": "工具集",
-    "link": "https://tooltopia.dstbp.net"
+    "link": "https://tooltopia.dstbp.com"
   },
   {
     "icon": "Compass",
     "name": "网址集",
-    "link": "https://webnav.dstbp.net/"
+    "link": "https://webnav.dstbp.com/"
   },
   {
     "icon": "Book",
     "name": "个人相册",
-    "link": "https://album.dstbp.net/"
+    "link": "https://album.dstbp.com/"
   },
   {
     "icon": "Fire",
     "name": "今日热榜",
-    "link": "https://dailyhot.dstbp.net/"
+    "link": "https://dailyhot.dstbp.com/"
   },
   {
     "icon": "ChartBar",
     "name": "站点监测",
-    "link": "https://monitors.dstbp.net/"
+    "link": "https://monitors.dstbp.com/"
   }
 ]
